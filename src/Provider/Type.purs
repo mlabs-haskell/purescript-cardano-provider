@@ -3,7 +3,7 @@ module Cardano.Provider.Type where
 import Cardano.Provider.Error (ClientError, GetTxMetadataError)
 import Cardano.Types (Address, AuxiliaryData, DataHash, NetworkId, PlutusData, PoolPubKeyHash, ScriptHash, ScriptRef, StakePubKeyHash, Transaction, TransactionHash, TransactionInput, TransactionOutput, UtxoMap)
 import Cardano.Types.Chain as Chain
-import Cardano.Types.DelegationAndRewards (DelegationsAndRewards)
+import Cardano.Types.DelegationsAndRewards (DelegationsAndRewards)
 import Cardano.Types.EraSummaries (EraSummaries)
 import Cardano.Types.Ogmios (AdditionalUtxoSet, CurrentEpoch, TxEvaluationR)
 import Data.Either (Either)

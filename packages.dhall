@@ -176,7 +176,7 @@ let additions =
           , "untagged-union"
           ]
         , repo = "https://github.com/KristianBalaj/purescript-cardano-types"
-        , version = "3c172b70ed0c9ebd91376162e45a482ff6284a67"
+        , version = "f6e73a1512b1373c38324a6503adf57982d749f2"
         }
       }
 in  upstream // additions
