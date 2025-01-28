@@ -10,16 +10,20 @@ When creating a new Spago project, you can use
 `spago init --no-comments` or `spago init -C`
 to generate this file without the comments in this block.
 -}
-{ name = "cardano-types"
+{ name = "my-project"
 , dependencies =
   [ "aeson"
   , "aff"
+  , "affjax"
+  , "argonaut-codecs"
   , "arraybuffer-types"
   , "arrays"
   , "bifunctors"
   , "bytearrays"
   , "cardano-plutus-data-schema"
   , "cardano-serialization-lib"
+  , "cardano-types"
+  , "console"
   , "control"
   , "datetime"
   , "effect"
