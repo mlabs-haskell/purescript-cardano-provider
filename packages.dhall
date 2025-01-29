@@ -126,7 +126,6 @@ let additions =
         { dependencies =
           [ "aeson"
           , "aff"
-          , "argonaut-codecs"
           , "arraybuffer-types"
           , "arrays"
           , "bifunctors"
@@ -141,8 +140,6 @@ let additions =
           , "exceptions"
           , "foldable-traversable"
           , "foreign-object"
-          , "formatters"
-          , "heterogeneous"
           , "integers"
           , "js-bigints"
           , "lattice"
@@ -165,18 +162,15 @@ let additions =
           , "record"
           , "safe-coerce"
           , "spec"
-          , "strings"
-          , "stringutils"
           , "these"
           , "tuples"
           , "typelevel-prelude"
           , "uint"
           , "unfoldable"
           , "unsafe-coerce"
-          , "untagged-union"
           ]
         , repo = "https://github.com/KristianBalaj/purescript-cardano-types"
-        , version = "f6e73a1512b1373c38324a6503adf57982d749f2"
+        , version = "144659ff92a5d7da1f5b0fda5f783de06d6deba3"
         }
       }
 in  upstream // additions

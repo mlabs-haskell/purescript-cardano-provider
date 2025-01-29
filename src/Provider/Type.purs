@@ -1,11 +1,27 @@
 module Cardano.Provider.Type where
 
 import Cardano.Provider.Error (ClientError, GetTxMetadataError)
-import Cardano.Types (Address, AuxiliaryData, DataHash, NetworkId, PlutusData, PoolPubKeyHash, ScriptHash, ScriptRef, StakePubKeyHash, Transaction, TransactionHash, TransactionInput, TransactionOutput, UtxoMap)
+import Cardano.Types
+  ( Address
+  , AuxiliaryData
+  , DataHash
+  , NetworkId
+  , PlutusData
+  , PoolPubKeyHash
+  , ScriptHash
+  , ScriptRef
+  , StakePubKeyHash
+  , Transaction
+  , TransactionHash
+  , TransactionInput
+  , TransactionOutput
+  , UtxoMap
+  )
+import Cardano.Types.BigNum (BigNum)
 import Cardano.Types.Chain as Chain
 import Cardano.Types.DelegationsAndRewards (DelegationsAndRewards)
 import Cardano.Types.EraSummaries (EraSummaries)
-import Cardano.Types.Ogmios (AdditionalUtxoSet, CurrentEpoch, TxEvaluationR)
+import Cardano.Types.TxEvaluation (TxEvaluationR)
 import Data.Either (Either)
 import Data.Maybe (Maybe)
 import Effect.Aff (Aff)
@@ -23,10 +39,10 @@ type Provider =
   , doesTxExist :: TransactionHash -> AffE Boolean
   , utxosAt :: Address -> AffE UtxoMap
   , getChainTip :: AffE Chain.Tip
-  , getCurrentEpoch :: Aff CurrentEpoch
+  , getCurrentEpoch :: Aff BigNum
   -- TODO Capture errors from all backends
   , submitTx :: Transaction -> AffE TransactionHash
-  , evaluateTx :: Transaction -> AdditionalUtxoSet -> Aff TxEvaluationR
+  , evaluateTx :: Transaction -> UtxoMap -> Aff TxEvaluationR
   , getEraSummaries :: AffE EraSummaries
   , getPoolIds :: AffE (Array PoolPubKeyHash)
   , getPubKeyHashDelegationsAndRewards ::
@@ -34,3 +50,4 @@ type Provider =
   , getValidatorHashDelegationsAndRewards ::
       NetworkId -> ScriptHash -> AffE (Maybe DelegationsAndRewards)
   }
+
