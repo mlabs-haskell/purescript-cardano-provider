@@ -9,7 +9,7 @@ import Cardano.Types.BigNum (BigNum)
 import Cardano.Types.Chain as Chain
 import Cardano.Types.DelegationsAndRewards (DelegationsAndRewards)
 import Cardano.Types.EraSummaries (EraSummaries)
-import Cardano.Types.TxEvaluation (OgmiosTxOutRef, TxEvaluationR, OgmiosTxOut)
+import Cardano.Provider.TxEvaluation (OgmiosTxOutRef, TxEvaluationR, OgmiosTxOut)
 import Data.Either (Either)
 import Data.Map (Map)
 import Data.Maybe (Maybe)

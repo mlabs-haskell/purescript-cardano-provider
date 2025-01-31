@@ -24,6 +24,7 @@ to generate this file without the comments in this block.
   , "newtype"
   , "ordered-collections"
   , "prelude"
+  , "uint"
   ]
 , packages = ./packages.dhall
 , sources = [ "src/**/*.purs", "test/**/*.purs" ]
