@@ -1,4 +1,7 @@
-module Cardano.Provider.Type where
+module Cardano.Provider.Type
+  ( AffE
+  , Provider
+  ) where
 
 import Cardano.Provider.Error (ClientError, GetTxMetadataError)
 import Cardano.Types (Address, AuxiliaryData, DataHash, NetworkId, PlutusData, PoolPubKeyHash, ScriptHash, ScriptRef, StakePubKeyHash, Transaction, TransactionHash, TransactionInput, TransactionOutput, UtxoMap)
@@ -28,7 +31,6 @@ type Provider =
   , getCurrentEpoch :: Aff BigNum
   -- TODO Capture errors from all backends
   , submitTx :: Transaction -> AffE TransactionHash
-
   , evaluateTx :: Transaction -> Map OgmiosTxOutRef OgmiosTxOut -> Aff TxEvaluationR
   , getEraSummaries :: AffE EraSummaries
   , getPoolIds :: AffE (Array PoolPubKeyHash)
