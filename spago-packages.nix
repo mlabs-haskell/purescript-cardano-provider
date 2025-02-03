@@ -201,7 +201,7 @@ let
         name = "cardano-types";
         version = "2166745949fd501acc6b46dac4ec9a6d517bbc95";
         src = pkgs.fetchgit {
-          url = "https://github.com/KristianBalaj/purescript-cardano-types";
+          url = "https://github.com/mlabs-haskell/purescript-cardano-types.git";
           rev = "2166745949fd501acc6b46dac4ec9a6d517bbc95";
           sha256 = "00c09vx1j6cw41jd1q9z29cb4264w6ab28jgxkfjb04ngyb3d2mb";
         };
