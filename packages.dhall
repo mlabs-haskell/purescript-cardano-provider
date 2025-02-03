@@ -169,7 +169,7 @@ let additions =
           , "unfoldable"
           , "unsafe-coerce"
           ]
-        , repo = "https://github.com/KristianBalaj/purescript-cardano-types"
+        , repo = "https://github.com/mlabs-haskell/purescript-cardano-types.git"
         , version = "2166745949fd501acc6b46dac4ec9a6d517bbc95"
         }
       }
