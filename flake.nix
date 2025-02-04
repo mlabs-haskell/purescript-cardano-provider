@@ -1,5 +1,5 @@
 {
-  description = "purescript-cardano-types";
+  description = "purescript-cardano-provider";
 
   # Allow IFD in `nix flake check`.
   nixConfig.allow-import-from-derivation = "true";
@@ -7,7 +7,7 @@
   nixConfig = {
     extra-substituters = [ "https://plutonomicon.cachix.org" ];
     extra-trusted-public-keys = [ "plutonomicon.cachix.org-1:evUxtNULjCjOipxwAnYhNFeF/lyYU1FeNGaVAnm+QQw=" ];
-    bash-prompt = "\\[\\e[0m\\][\\[\\e[0;2m\\]nix-develop \\[\\e[0;1m\\]ps-cardano-types@\\[\\033[33m\\]$(git rev-parse --abbrev-ref HEAD) \\[\\e[0;32m\\]\\w\\[\\e[0m\\]]\\[\\e[0m\\]$ \\[\\e[0m\\]";
+    bash-prompt = "\\[\\e[0m\\][\\[\\e[0;2m\\]nix-develop \\[\\e[0;1m\\]ps-cardano-provider@\\[\\033[33m\\]$(git rev-parse --abbrev-ref HEAD) \\[\\e[0;32m\\]\\w\\[\\e[0m\\]]\\[\\e[0m\\]$ \\[\\e[0m\\]";
   };
 
   inputs = {
@@ -81,40 +81,6 @@
               '';
             };
 
-          nodejs = pkgs.nodejs-18_x;
-
-          src = ./.;
-
-          mkNodeEnv = { withDevDeps ? true }: import
-            (pkgs.runCommand "node-packages"
-              {
-                buildInputs = [ pkgs.nodePackages.node2nix ];
-              } ''
-              mkdir $out
-              cd $out
-              cp ${src}/package-lock.json ./package-lock.json
-              cp ${src}/package.json ./package.json
-              node2nix ${pkgs.lib.optionalString withDevDeps "--development" } \
-                --lock ./package-lock.json -i ./package.json
-            '')
-            { inherit pkgs nodejs system; };
-
-          mkNodeModules = { withDevDeps ? true }:
-            let
-              nodeEnv = mkNodeEnv { inherit withDevDeps; };
-              modules = pkgs.callPackage
-                (_:
-                  nodeEnv // {
-                    shell = nodeEnv.shell.override {
-                      # see https://github.com/svanderburg/node2nix/issues/198
-                      buildInputs = [ pkgs.nodePackages.node-gyp-build ];
-                    };
-                  });
-            in
-            (modules { }).shell.nodeDependencies;
-
-          nodeModules = mkNodeModules { };
-
           # Compiles your Purescript project and copies the `output` directory into the
           # Nix store. Also copies the local sources to be made available later as `purs`
           # does not include any external files to its `output` (if we attempted to refer
@@ -145,12 +111,6 @@
               ];
               unpackPhase = ''
                 export HOME="$TMP"
-
-                # handle NodeJS deps
-                export NODE_PATH="${nodeModules}/lib/node_modules"
-                ln -sfn $NODE_PATH node_modules
-                export PATH="${nodeModules}/bin:$PATH"
-
                 # copy the dependency build artifacts and sources
                 # preserve the modification date so that we don't rebuild them
                 mkdir -p output .spago
@@ -206,11 +166,6 @@
                 # Copy the purescript project files
                 cp -r ${builtProject}/* .
 
-                # Handle nodejs dependencies
-                export NODE_PATH="${nodeModules}/lib/node_modules"
-                ln -sfn $NODE_PATH node_modules
-                export PATH="${nodeModules}/bin:$PATH"
-
                 # The tests may depend on sources
                 cp -r $src/* .
 
@@ -225,12 +180,6 @@
         {
           devShells = {
             default = pkgs.mkShell {
-              shellHook = ''
-                export NODE_PATH="${nodeModules}/lib/node_modules"
-                ln -sfn $NODE_PATH node_modules
-                export PATH="${nodeModules}/bin:$PATH"
-                export NPM_CONFIG_PACKAGE_LOCK_ONLY=true
-              '';
               buildInputs = with pkgs; [
                 nixpkgs-fmt
                 easy-ps.purs
@@ -246,14 +195,6 @@
                 nodejs-18_x
               ];
             };
-          };
-
-          packages = {
-            # Example package. Build with `nix build` or `nix build .#myapp`.
-            default = self'.packages.myapp;
-            myapp = pkgs.writeShellScriptBin "myapp" ''
-              echo "Hello, World!"
-            '';
           };
 
           # Example flake checks. Run with `nix flake check --keep-going`
