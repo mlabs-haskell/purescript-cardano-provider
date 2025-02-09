@@ -2,6 +2,7 @@
 , dependencies =
   [ "aeson"
   , "aff"
+  , "aff-promise"
   , "affjax"
   , "argonaut-codecs"
   , "cardano-types"

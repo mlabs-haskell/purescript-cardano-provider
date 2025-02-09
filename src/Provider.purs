@@ -51,3 +51,5 @@ import Cardano.Provider.TxEvaluation
   , TxEvaluationResult(TxEvaluationResult)
   , showRedeemerPointer
   ) as X
+import Cardano.Provider.ServerConfig (Host, ServerConfig) as X
+import Cardano.Provider.Affjax (request) as X
