@@ -29,6 +29,18 @@ let
         installPhase = "ln -s $src $out";
       };
 
+    "aff-promise" = pkgs.stdenv.mkDerivation {
+        name = "aff-promise";
+        version = "v4.0.0";
+        src = pkgs.fetchgit {
+          url = "https://github.com/nwolverson/purescript-aff-promise.git";
+          rev = "3aa74e68e3e4c3e38d821375703e0b2f49d831eb";
+          sha256 = "10gv3b05dxnlmr9zmigqs1hz4xqrx7da30aqh12kqg3zrg49k9cc";
+        };
+        phases = "installPhase";
+        installPhase = "ln -s $src $out";
+      };
+
     "affjax" = pkgs.stdenv.mkDerivation {
         name = "affjax";
         version = "v13.0.0";
@@ -199,11 +211,11 @@ let
 
     "cardano-types" = pkgs.stdenv.mkDerivation {
         name = "cardano-types";
-        version = "4ac24c91bb5496dcc159fdaf1cf8783c56155449";
+        version = "v4.2.0";
         src = pkgs.fetchgit {
           url = "https://github.com/mlabs-haskell/purescript-cardano-types.git";
-          rev = "4ac24c91bb5496dcc159fdaf1cf8783c56155449";
-          sha256 = "1658jq9s8lmpvcaglj46s13k4j393iwxd6qvcjs9h4jvn3iwv6hm";
+          rev = "f3ee428680c1dd58834e3c68c4a15de6d6620bfb";
+          sha256 = "12cnwv29jlgwxgh3h9v3pl8xqmfmvvzd09z05aw2jn3ynymnlpr3";
         };
         phases = "installPhase";
         installPhase = "ln -s $src $out";

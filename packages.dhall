@@ -170,7 +170,7 @@ let additions =
           , "unsafe-coerce"
           ]
         , repo = "https://github.com/mlabs-haskell/purescript-cardano-types.git"
-        , version = "4ac24c91bb5496dcc159fdaf1cf8783c56155449"
+        , version = "v4.2.0"
         }
       }
 in  upstream // additions
