@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "name": "cardano-provider",
+  "license": "MIT",
+  "dependencies": {
+    "xhr2": "0.2.1"
+  },
+  "devDependencies": {}
+}
