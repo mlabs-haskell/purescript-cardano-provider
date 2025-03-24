@@ -13,6 +13,7 @@
   , "newtype"
   , "ordered-collections"
   , "prelude"
+  , "strings"
   , "uint"
   ]
 , packages = ./packages.dhall
