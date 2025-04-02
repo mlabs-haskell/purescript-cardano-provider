@@ -69,7 +69,7 @@ import Data.List (List)
 import Data.Map (Map)
 import Data.Map (alter, empty, fromFoldable) as Map
 import Data.Maybe (Maybe(Just, Nothing), maybe)
-import Data.Newtype (class Newtype, unwrap)
+import Data.Newtype (class Newtype, unwrap, wrap)
 import Data.Show.Generic (genericShow)
 import Data.These (These(That, Both), theseLeft, theseRight)
 import Data.Traversable (sequence, traverse)
@@ -276,6 +276,12 @@ derive instance Generic TxEvaluationR _
 
 instance Show TxEvaluationR where
   show = genericShow
+
+instance DecodeOgmios TxEvaluationR where
+  decodeOgmios =
+    decodeErrorOrResult
+      { parseError: map (wrap <<< Left) <<< decodeAeson }
+      { parseResult: map (wrap <<< Right) <<< decodeAeson }
 
 -- TxEvaluationResult ----------------------------------------------------------
 
