@@ -4,12 +4,27 @@ module Cardano.Provider.Type
   ) where
 
 import Cardano.Provider.Error (ClientError, GetTxMetadataError)
-import Cardano.Types (Address, AuxiliaryData, DataHash, NetworkId, PlutusData, PoolPubKeyHash, ScriptHash, ScriptRef, StakePubKeyHash, Transaction, TransactionHash, TransactionInput, TransactionOutput, UtxoMap)
+import Cardano.Types
+  ( Address
+  , AuxiliaryData
+  , DataHash
+  , NetworkId
+  , PlutusData
+  , PoolPubKeyHash
+  , ScriptHash
+  , ScriptRef
+  , StakePubKeyHash
+  , Transaction
+  , TransactionHash
+  , TransactionInput
+  , TransactionOutput
+  , UtxoMap
+  )
 import Cardano.Types.BigNum (BigNum)
 import Cardano.Types.Chain as Chain
 import Cardano.Types.DelegationsAndRewards (DelegationsAndRewards)
 import Cardano.Types.EraSummaries (EraSummaries)
-import Cardano.Provider.TxEvaluation (OgmiosTxOutRef, TxEvaluationR, OgmiosTxOut)
+import Cardano.Provider.OgmiosTypes (OgmiosTxOutRef, TxEvaluationR, OgmiosTxOut)
 import Data.Either (Either)
 import Data.Map (Map)
 import Data.Maybe (Maybe)
