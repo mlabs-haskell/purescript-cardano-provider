@@ -24,7 +24,7 @@ async function nodeDriver() {
       } else {
         return url || "/";
       }
-    },
+    }
   };
 
   return nodeDriverCache;
