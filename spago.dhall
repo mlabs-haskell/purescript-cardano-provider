@@ -8,7 +8,6 @@
   , "arrays"
   , "bifunctors"
   , "cardano-types"
-  , "console"
   , "effect"
   , "either"
   , "exceptions"

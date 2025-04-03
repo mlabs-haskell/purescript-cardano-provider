@@ -1,11 +1,15 @@
 # purescript-cardano-provider
 
-This library contains a unified interface for cardano provider both for querying but also submitting data on-chain.
+This library defines a unified `Provider` interface encapsulating various
+queries for interacting with the Cardano blockchain, serving as an abstraction
+for [cardano-transaction-lib (CTL)](https://github.com/Plutonomicon/cardano-transaction-lib)
+query layer components.
 
-The corresponding type is `Provider` defined in the `Cardano.Provider.Type` module.
+The corresponding `Provider` type is defined in the `Cardano.Provider.Type` module.
 
-Additionally, the library defines types specific to a provider:
-- various errors that can be propagated throught the Provider defined in `Cardano.Provider.Error` module
-- types representing transaction evaluation errors or entities specific to a transaction evaluation, all defined in the `Cardano.Provider.TxEvaluation` module
-- `ServerConfig` type
-- Affjax `request` helper
+The library also provides various utility types and other common types for reuse
+by `Provider` implementations, including:
+  - Errors, defined in the `Cardano.Provider.Error` module.
+  - Reusable Ogmios types, defined in the `Cardano.Provider.OgmiosTypes` module.
+  - The `ServerConfig` type.
+  - The Affjax `request` helper.
