@@ -1,9 +1,6 @@
 module Cardano.Provider (module X) where
 
-import Cardano.Provider.Type
-  ( AffE
-  , Provider
-  ) as X
+import Cardano.Provider.Affjax (request) as X
 import Cardano.Provider.Error
   ( GetTxMetadataError
       ( GetTxMetadataTxNotFoundError
@@ -68,4 +65,22 @@ import Cardano.Provider.OgmiosTypes
   , showRedeemerPointer
   ) as X
 import Cardano.Provider.ServerConfig (Host, ServerConfig) as X
-import Cardano.Provider.Affjax (request) as X
+import Cardano.Provider.Type
+  ( AffE
+  , GovernanceQueries
+  , Provider
+  ) as X
+import Cardano.Provider.Types.Governance.DrepInfo (DrepInfo) as X
+import Cardano.Provider.Types.Governance.Proposal (Proposal) as X
+import Cardano.Provider.Types.Governance.ProposalType
+  ( ProposalType
+      ( ChangeProtocolParameters
+      , TriggerHardFork
+      , TreasuryWithdrawal
+      , NoConfidence
+      , NewComittee
+      , NewConstitution
+      , Info
+      )
+  ) as X
+import Cardano.Provider.Types.Governance.VoteOnProposal (VoteOnProposal) as X
