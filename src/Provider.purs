@@ -78,7 +78,7 @@ import Cardano.Provider.Types.Governance.ProposalType
       , TriggerHardFork
       , TreasuryWithdrawal
       , NoConfidence
-      , NewComittee
+      , NewCommittee
       , NewConstitution
       , Info
       )

@@ -3,10 +3,10 @@ module Cardano.Provider.Types.Governance.Proposal
   ) where
 
 import Cardano.Provider.Types.Governance.ProposalType (ProposalType)
-import Cardano.Types (BigNum, RewardAddress)
+import Cardano.Types (Coin, RewardAddress)
 
 type Proposal =
   { proposalType :: ProposalType
-  , deposit :: BigNum
+  , deposit :: Coin
   , returnAddress :: RewardAddress
   }

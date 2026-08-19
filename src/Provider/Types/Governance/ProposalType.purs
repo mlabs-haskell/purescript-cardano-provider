@@ -4,7 +4,7 @@ module Cardano.Provider.Types.Governance.ProposalType
       , TriggerHardFork
       , TreasuryWithdrawal
       , NoConfidence
-      , NewComittee
+      , NewCommittee
       , NewConstitution
       , Info
       )
@@ -20,7 +20,7 @@ data ProposalType
   | TriggerHardFork
   | TreasuryWithdrawal
   | NoConfidence
-  | NewComittee
+  | NewCommittee
   | NewConstitution
   | Info
 
