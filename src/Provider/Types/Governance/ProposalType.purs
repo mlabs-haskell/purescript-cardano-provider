@@ -8,10 +8,22 @@ module Cardano.Provider.Types.Governance.ProposalType
       , NewConstitution
       , Info
       )
+  , getGovActionType
   ) where
 
 import Prelude
 
+import Cardano.Types
+  ( GovernanceAction
+      ( ChangePParams
+      , TriggerHF
+      , TreasuryWdrl
+      , NoConfidence
+      , NewCommittee
+      , NewConstitution
+      , Info
+      )
+  ) as GovAction
 import Data.Generic.Rep (class Generic)
 import Data.Show.Generic (genericShow)
 
@@ -29,3 +41,14 @@ derive instance Eq ProposalType
 
 instance Show ProposalType where
   show = genericShow
+
+getGovActionType :: GovAction.GovernanceAction -> ProposalType
+getGovActionType =
+  case _ of
+    GovAction.ChangePParams _ -> ChangeProtocolParameters
+    GovAction.TriggerHF _ -> TriggerHardFork
+    GovAction.TreasuryWdrl _ -> TreasuryWithdrawal
+    GovAction.NoConfidence _ -> NoConfidence
+    GovAction.NewCommittee _ -> NewCommittee
+    GovAction.NewConstitution _ -> NewConstitution
+    GovAction.Info -> Info

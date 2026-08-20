@@ -82,5 +82,6 @@ import Cardano.Provider.Types.Governance.ProposalType
       , NewConstitution
       , Info
       )
+  , getGovActionType
   ) as X
 import Cardano.Provider.Types.Governance.VoteOnProposal (VoteOnProposal) as X
