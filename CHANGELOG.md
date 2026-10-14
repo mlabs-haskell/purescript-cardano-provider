@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and we follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+# v3.0.0
+
+## Added
+
+- Governance queries (`getProposalById`, `getVotesOnProposal`, `getRegisteredDrepInfo`) and the `GovernanceQueries` row type extending `Provider` ([#5](https://github.com/mlabs-haskell/purescript-cardano-provider/pull/5))
+- Governance types `Proposal`, `ProposalType`, `VoteOnProposal`, `DrepInfo`, and the `getGovActionType` helper ([#5](https://github.com/mlabs-haskell/purescript-cardano-provider/pull/5))
+
 # v2.1.0
 
 ## Added
