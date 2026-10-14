@@ -1,13 +1,20 @@
 module Cardano.Provider.Type
   ( AffE
+  , GovernanceQueries
   , Provider
   ) where
 
 import Cardano.Provider.Error (ClientError, GetTxMetadataError)
+import Cardano.Provider.OgmiosTypes (OgmiosTxOutRef, TxEvaluationR, OgmiosTxOut)
+import Cardano.Provider.Types.Governance.DrepInfo (DrepInfo)
+import Cardano.Provider.Types.Governance.Proposal (Proposal)
+import Cardano.Provider.Types.Governance.VoteOnProposal (VoteOnProposal)
 import Cardano.Types
   ( Address
   , AuxiliaryData
+  , Credential
   , DataHash
+  , GovernanceActionId
   , NetworkId
   , PlutusData
   , PoolPubKeyHash
@@ -24,7 +31,6 @@ import Cardano.Types.BigNum (BigNum)
 import Cardano.Types.Chain as Chain
 import Cardano.Types.DelegationsAndRewards (DelegationsAndRewards)
 import Cardano.Types.EraSummaries (EraSummaries)
-import Cardano.Provider.OgmiosTypes (OgmiosTxOutRef, TxEvaluationR, OgmiosTxOut)
 import Data.Either (Either)
 import Data.Map (Map)
 import Data.Maybe (Maybe)
@@ -53,5 +59,12 @@ type Provider =
       NetworkId -> StakePubKeyHash -> AffE (Maybe DelegationsAndRewards)
   , getValidatorHashDelegationsAndRewards ::
       NetworkId -> ScriptHash -> AffE (Maybe DelegationsAndRewards)
+  | GovernanceQueries ()
   }
 
+type GovernanceQueries (r :: Row Type) =
+  ( getProposalById :: GovernanceActionId -> AffE (Maybe Proposal)
+  , getVotesOnProposal :: GovernanceActionId -> AffE (Array VoteOnProposal)
+  , getRegisteredDrepInfo :: Credential -> AffE (Maybe DrepInfo)
+  | r
+  )
